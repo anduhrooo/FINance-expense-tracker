@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --header: #245c94;
+    --background: #0b131e;
+    --tile: #202b3b;
+    --text: white;
+    --card: #95b4d45f;
+}
+
+body {
+    background-color: var(--background);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    min-height: 80px;
+    max-width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text);
+    background: var(--header);
+}
+
+.nav {
+    transition: all 0.3s ease-in-out;
+}
+  
+.nav__list {
+display: flex;
+column-gap: 40px;
+}
+
+.nav__link {
+color: rgba(255, 255, 255, 0.75);
+transition: all 0.3s;
+font-size: larger;
+}
+
+.nav__link:hover,
+.nav__link:focus {
+color: rgba(255, 255, 255, 1);
+}
+
+#income__bar {
+display: flex;
+flex-direction: column;
+flex: 70%;
+}
+
+#total__spent {
+    height: 10vh;
+    margin: 2%;
+    background-color: var(--tile);
+    border-radius: 10px;
+    padding-left: 20px;
+    color: var(--text);
+    padding-top: 15px;
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#expense__list {
+    background-color: var(--tile);
+    margin: 1%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    height: 65vh;
+    color: var(--text);
+}
+
+#chart {
+    height: 200px;
+}
+
+/* ==================== DEMO CHART ==================== */
+#demo-piechart {
+    width: 200px;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* ==================== DEMO CHART ==================== */
+
+#summary__text {
+    background-color: var(--card);
+    border-radius: 10px;
+    height: 28vh;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+#expense__summary {
+    background-color: var(--tile);
+    margin: 1%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    height: 65vh;
+    color: var(--text);
+}
+
+#list__title {
+    height: 10vh;
+}
+
+#addExpense {
+    background-color: var(--header);
+    border: none;
+    color: var(--text);
+    padding: 10px 10px;
+}
+
+#expense__cards {
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-color: var(--card) var(--tile);
+}
+
+/* ==================== DEMO CARDS ==================== */
+.card {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    width: 99%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: var(--card);
+    border-radius: 10px;
+}
+/* ==================== DEMO CARDS ==================== */
