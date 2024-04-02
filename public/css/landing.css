@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+  }
+  
+  /* BASE STYLES */
+  body {
+    background-color: #e8f0f7;
+    font-family: 'Inter', sans-serif;
+    min-height: 500vh;
+  }
+  
