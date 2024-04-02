@@ -166,6 +166,18 @@
       display: block;
     }
   }
+
+
+  /* @media screen and (max-width: 1500px ) {
+      .card-one, .card-two{
+        background-color:red;
+       visibility: hidden;
+      }
+
+      .card-three{
+       visibility: visible;
+      }
+  } */
     /* ////////////////////////////Divider///////////////////////// */
 
 
@@ -176,7 +188,7 @@
   /* align-items: center; */
   
 }
-.card-one, .card-two {
+.card-one, .card-two{
   display: flex;
   width: calc(50% - 5px); /* Adjust width and spacing as needed */
   margin-right: 10px; /*Adjust spacing between cards */
@@ -196,6 +208,10 @@
   justify-content: center;
   align-items: center;
   padding-right: 250px;
+}
+.card-three{
+  display:none;
+  z-index: 1000;
 }
 form {
   background-color: #fff;
@@ -225,6 +241,18 @@ form {
   max-width: 400px;
   width: 100%;
 }
+
+.formThree{
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 41px 41px 83px #57616b,
+  -41px -3px 83px #dee2e6;
+  max-width: 400px;
+  width: 100%;
+  
+}
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -272,4 +300,21 @@ input[type="submit"]:hover {
 
 .custom-shape-divider-bottom-1712001756 .shape-fill {
   fill: #81bedf;
+}
+
+/*Merges Create Account and Login when the screen shrinks*/
+@media screen and (max-width: 1500px ) {
+  .card-one, .card-two{
+   display:none;
+  }
+
+  .card-three{
+   display:inline;
+  }
+
+  .forms{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
 }
