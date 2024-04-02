@@ -249,6 +249,10 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #00AFBA;
 }
+
+.footer{
+  background-color: aquamarine;
+}
 /* //////////////////////Divider////////////////////// */
 
 .custom-shape-divider-bottom-1712001756 {
