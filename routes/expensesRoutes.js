@@ -14,9 +14,8 @@ try {
 });
 
 // GET BY ID
-//TODO: does not get by id yet
 router.get("/:id", (req, res) => {
-Expense.findByPk(req.params.expense_id).then((data) => {
+Expense.findByPk(req.params.id).then((data) => {
     if(data==null){
     return res.status(404).json({msg:"does not exist!"})
     }
@@ -59,11 +58,10 @@ Expense.destroy({
 });
 
 // PUT (EDIT BY ID)
-//TODO: cannot edit by ID yet
 router.put("/:id", (req, res) => {
 Expense.update(req.body, {
     where: {
-    expense_id: req.params.expense_id,
+    expense_id: req.params.id,
     },
 }).then((data) => {
     if(data[0]===0){
