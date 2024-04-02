@@ -14,9 +14,8 @@ try {
 });
 
 // GET BY ID
-//TODO: doesnt fetch by id yet
 router.get("/:id", (req, res) => {
-User.findByPk(req.params.user_id).then((data) => {
+User.findByPk(req.params.id).then((data) => {
     if(data==null){
     return res.status(404).json({msg:"does not exist!"})
     }
@@ -63,7 +62,7 @@ User.destroy({
 router.put("/:id", (req, res) => {
 User.update(req.body, {
     where: {
-    user_id: req.params.user_id,
+    user_id: req.params.id,
     },
 }).then((data) => {
     if(data[0]===0){
