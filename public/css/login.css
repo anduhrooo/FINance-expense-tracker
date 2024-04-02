@@ -209,6 +209,7 @@
 }
 .card-three{
   display:none;
+  z-index: 1000;
 }
 form {
   background-color: #fff;
@@ -247,6 +248,7 @@ form {
   -41px -3px 83px #dee2e6;
   max-width: 400px;
   width: 100%;
+  
 }
 
 input[type="text"],
