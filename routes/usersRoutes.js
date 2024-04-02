@@ -14,6 +14,7 @@ try {
 });
 
 // GET BY ID
+//TODO: doesnt fetch by id yet
 router.get("/:id", (req, res) => {
 User.findByPk(req.params.user_id).then((data) => {
     if(data==null){
@@ -30,10 +31,10 @@ User.findByPk(req.params.user_id).then((data) => {
 router.post('/', (req, res) => {
 // create a new User
 User.create({
-    user_id:req.body.user_id,
-    category_id:req.body.category_id,
-    amount:req.body.amount,
-    description:req.body.description,
+    first_name:req.body.first_name,
+    last_name:req.body.last_name,
+    email:req.body.email,
+    password:req.body.password,
 }
 ).then(data=>{
     res.json(data)
@@ -58,6 +59,7 @@ User.destroy({
 });
 
 // PUT (EDIT BY ID)
+//TODO: does not edit yet
 router.put("/:id", (req, res) => {
 User.update(req.body, {
     where: {

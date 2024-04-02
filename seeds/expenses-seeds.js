@@ -3,9 +3,9 @@ const { Expense } = require('../models');
 const expenseData = [
   {
     user_id: 1,
-    category_id: 1,
+    category: 'Dining Out',
     amount: 10,
-    description: 'in n out'
+    description: 'In N Out'
   },
 
 ];

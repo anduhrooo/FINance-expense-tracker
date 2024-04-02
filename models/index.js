@@ -1,11 +1,11 @@
 const User = require('./users');
 const Expense = require('./expenses');
-const Budget = require('./budgets');
-const Category = require('./categories');
+// const Budget = require('./budgets');
+// const Category = require('./categories');
 
 module.exports = {
     User,
     Expense,
-    Budget,
-    Category
+    // Budget,
+    // Category
 }

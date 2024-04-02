@@ -14,6 +14,7 @@ try {
 });
 
 // GET BY ID
+//TODO: does not get by id yet
 router.get("/:id", (req, res) => {
 Expense.findByPk(req.params.expense_id).then((data) => {
     if(data==null){
@@ -31,7 +32,7 @@ router.post('/', (req, res) => {
 // create a new Expense
 Expense.create({
     user_id:req.body.user_id,
-    category_id:req.body.category_id,
+    category:req.body.category,
     amount:req.body.amount,
     description:req.body.description,
 }
@@ -58,6 +59,7 @@ Expense.destroy({
 });
 
 // PUT (EDIT BY ID)
+//TODO: cannot edit by ID yet
 router.put("/:id", (req, res) => {
 Expense.update(req.body, {
     where: {
