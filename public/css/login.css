@@ -37,7 +37,7 @@
   .bottom-bar {
     background-color: rgb(27, 36, 48);
     box-shadow: 0px 5px 8px rgb(48, 75, 82);
-    z-index: 10000;
+    z-index: 100;
   }
   
   .bottom-bar__content {
@@ -218,17 +218,6 @@
     }
   }
 
-
-  /* @media screen and (max-width: 1500px ) {
-      .card-one, .card-two{
-        background-color:red;
-       visibility: hidden;
-      }
-
-      .card-three{
-       visibility: visible;
-      }
-  } */
     /* ////////////////////////////Divider///////////////////////// */
 
 
@@ -262,7 +251,9 @@
 }
 .card-three{
   display:none;
-  z-index: 1;
+  z-index: 1000;
+
+  
 }
 form {
   background-color: #fff;
@@ -299,9 +290,10 @@ form {
   border-radius: 15px;
   box-shadow: 41px 41px 83px #57616b,
   -41px -3px 83px #dee2e6;
-  max-width: 400px;
+  max-height: 550px;
   width: 100%;
-  
+  overflow:scroll;
+
 }
 
 input[type="text"],
@@ -327,6 +319,27 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
   background-color: #00AFBA;
+}
+/*///////////////////////Footer/////////////////////////*/
+.footer{
+  border: black 80px;
+  bottom: 0;
+  position: fixed;
+  z-index: 99999;
+  height: 50px;
+  width: 100%;
+}
+
+.github{
+  color: black;
+  z-index: 999999;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding-bottom: 60px;
+  padding: 10px;
+  font-size: 20px;
+  
 }
 /* //////////////////////Divider////////////////////// */
 
@@ -369,3 +382,4 @@ input[type="submit"]:hover {
     margin-top: 50px;
   }
 }
+
