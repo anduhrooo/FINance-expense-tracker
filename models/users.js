@@ -39,6 +39,9 @@ User.init(
         len:[8],
       }
     },
+    income: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,

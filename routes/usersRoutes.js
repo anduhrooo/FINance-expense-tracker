@@ -36,6 +36,7 @@ User.create({
     username:req.body.username,
     email:req.body.email,
     password:req.body.password,
+    income:req.body.income
 }
 ).then(data=>{
     res.json(data)
