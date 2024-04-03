@@ -349,7 +349,7 @@ input[type="submit"]:hover {
   left: 0;
   width: 100%;
   overflow: hidden;
-
+  z-index: -10;
   line-height: 0;
   transform: rotate(180deg);
 }
@@ -360,6 +360,7 @@ input[type="submit"]:hover {
   width: calc(215% + 1.3px);
   height: 286px;
   transform: rotateY(180deg);
+  
 }
 
 .custom-shape-divider-bottom-1712001756 .shape-fill {

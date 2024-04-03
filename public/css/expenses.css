@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     --header: #245c94;
-    --background: #0b131e;
+    --background: #dde2e6;
     --tile: #202b3b;
     --text: white;
     --card: #95b4d45f;
@@ -11,53 +11,6 @@
 
 body {
     background-color: var(--background);
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-header {
-    min-height: 80px;
-    max-width: 100%;
-    padding: 0 30px;
-    margin: 0 auto;  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text);
-    background: var(--header);
-}
-
-.nav {
-    transition: all 0.3s ease-in-out;
-}
-  
-.nav__list {
-display: flex;
-column-gap: 40px;
-}
-
-.nav__link {
-color: rgba(255, 255, 255, 0.75);
-transition: all 0.3s;
-font-size: larger;
-}
-
-.nav__link:hover,
-.nav__link:focus {
-color: rgba(255, 255, 255, 1);
-}
-
-#income__bar {
-display: flex;
-flex-direction: column;
-flex: 70%;
 }
 
 #total__spent {
