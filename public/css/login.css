@@ -37,7 +37,7 @@
   .bottom-bar {
     background-color: rgb(27, 36, 48);
     box-shadow: 0px 5px 8px rgb(48, 75, 82);
-    z-index: 10000;
+    z-index: 100;
   }
   
   .bottom-bar__content {
@@ -167,17 +167,6 @@
     }
   }
 
-
-  /* @media screen and (max-width: 1500px ) {
-      .card-one, .card-two{
-        background-color:red;
-       visibility: hidden;
-      }
-
-      .card-three{
-       visibility: visible;
-      }
-  } */
     /* ////////////////////////////Divider///////////////////////// */
 
 
@@ -212,6 +201,8 @@
 .card-three{
   display:none;
   z-index: 1000;
+
+  
 }
 form {
   background-color: #fff;
@@ -248,9 +239,10 @@ form {
   border-radius: 15px;
   box-shadow: 41px 41px 83px #57616b,
   -41px -3px 83px #dee2e6;
-  max-width: 400px;
+  max-height: 550px;
   width: 100%;
-  
+  overflow:scroll;
+
 }
 
 input[type="text"],
@@ -277,9 +269,26 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #00AFBA;
 }
-
+/*///////////////////////Footer/////////////////////////*/
 .footer{
-  background-color: aquamarine;
+  position: fixed;
+  bottom:0;
+  height: 50px;
+  width: 100%;
+}
+
+/* .custom-shape-divider-bottom-1712001756{
+  z-index: 1;
+} */
+
+.github{
+  color: red;
+  z-index: 999999;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding-bottom: 60px;
+  font-size: 20px;
 }
 /* //////////////////////Divider////////////////////// */
 
@@ -292,6 +301,8 @@ input[type="submit"]:hover {
 
   line-height: 0;
   transform: rotate(180deg);
+
+  z-index: 1;
 }
 
 .custom-shape-divider-bottom-1712001756 svg {
@@ -300,10 +311,14 @@ input[type="submit"]:hover {
   width: calc(215% + 1.3px);
   height: 286px;
   transform: rotateY(180deg);
+
+  z-index: 1;
 }
 
 .custom-shape-divider-bottom-1712001756 .shape-fill {
   fill: #81bedf;
+
+  z-index: 1;
 }
 
 /*Merges Create Account and Login when the screen shrinks*/
