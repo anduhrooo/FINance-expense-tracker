@@ -7,6 +7,7 @@ const UserData = [
     username: 'anduhrooo',
     email: 'test@test.test',
     password: 'password',
+    income: 100000000,
   },
   {
     first_name: 'Keanu',
@@ -14,6 +15,7 @@ const UserData = [
     username: 'Canoe',
     email: 'test@test.test',
     password: 'password1',
+    income: 100000000,
   },
   {
     first_name: 'Brian',
@@ -21,6 +23,7 @@ const UserData = [
     username: 'DK',
     email: 'test@test.test',
     password: 'password2',
+    income: 100000000,
   },
   {
     first_name: 'Bradley',
@@ -28,6 +31,7 @@ const UserData = [
     username: 'Bwallace',
     email: 'test@test.test',
     password: 'password3',
+    income: 100000000,
   },
 ];
 
