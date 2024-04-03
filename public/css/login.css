@@ -322,15 +322,13 @@ input[type="submit"]:hover {
 }
 /*///////////////////////Footer/////////////////////////*/
 .footer{
+  border: black 80px;
+  bottom: 0;
   position: fixed;
-  bottom:0;
+  z-index: 99999;
   height: 50px;
   width: 100%;
 }
-
-/* .custom-shape-divider-bottom-1712001756{
-  z-index: 1;
-} */
 
 .github{
   color: black;
@@ -339,7 +337,9 @@ input[type="submit"]:hover {
   justify-content: space-between;
   margin: 20px;
   padding-bottom: 60px;
+  padding: 10px;
   font-size: 20px;
+  
 }
 /* //////////////////////Divider////////////////////// */
 
@@ -352,8 +352,6 @@ input[type="submit"]:hover {
 
   line-height: 0;
   transform: rotate(180deg);
-
-  z-index: 1;
 }
 
 .custom-shape-divider-bottom-1712001756 svg {
@@ -362,14 +360,10 @@ input[type="submit"]:hover {
   width: calc(215% + 1.3px);
   height: 286px;
   transform: rotateY(180deg);
-
-  z-index: 1;
 }
 
 .custom-shape-divider-bottom-1712001756 .shape-fill {
   fill: #81bedf;
-
-  z-index: 1;
 }
 
 /*Merges Create Account and Login when the screen shrinks*/
@@ -388,3 +382,4 @@ input[type="submit"]:hover {
     margin-top: 50px;
   }
 }
+
