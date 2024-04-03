@@ -251,13 +251,9 @@
 }
 .card-three{
   display:none;
-<<<<<<< HEAD
   z-index: 1000;
 
   
-=======
-  z-index: 1;
->>>>>>> dev
 }
 form {
   background-color: #fff;
