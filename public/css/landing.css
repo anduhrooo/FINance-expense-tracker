@@ -121,6 +121,7 @@ body {
 /* For JS */
 .nav--open {
   left: 50% !important;
+  z-index: 1000;
 }
 
 .hamburger--open .bar:nth-child(1) {
