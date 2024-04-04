@@ -6,7 +6,14 @@ const {Expense} = require("../models");
 router.get("/", async (req, res) => {
 try {
     const data = await Expense.findAll();
-    res.json(data);
+    
+    
+    expenses = data.map(function(expenseObj){
+        return expenseObj.toJSON()
+    })
+    console.log(expenses)
+    // res.json(data);
+    res.render('landing', {expenses:expenses})
 } catch (err) {
     console.log(err);
     res.status(500).json({ msg: "error occurred", err });
@@ -19,6 +26,7 @@ Expense.findByPk(req.params.id).then((data) => {
     if(data==null){
     return res.status(404).json({msg:"does not exist!"})
     }
+    // res.render('expenses')
     res.json(data);
 }).catch(err=>{
     console.log(err);
