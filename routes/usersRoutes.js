@@ -15,16 +15,15 @@ try {
 });
 
 // GET BY ID
-router.get("/:id", (req, res) => {
-User.findByPk(req.params.id).then((data) => {
-    if(data==null){
-    return res.status(404).json({msg:"does not exist!"})
-    }
-    res.json(data);
-}).catch(err=>{
-    console.log(err);
-    res.status(500).json({msg:"error occurred",err})
-});;
+router.get("/:id", async (req, res) => {
+    try { const userData = await User.findByPk(req.params.id);
+        const hbsUser = userData.toJSON();
+        console.log(hbsUser);
+        //RENDERS TO profile.handlebars, uses hbsUser object
+        res.render('profile', hbsUser);
+    } catch(err) {
+        res.status(500).json({msg:"error occurred",err})
+    };
 });
 
 // POST (CREATE)
@@ -56,6 +55,11 @@ router.post("/login", async (req, res) => {
         }
         if(!bcrypt.compareSync(req.body.password, foundUser.password)){
             return res.status(401).json({msg:'invalid user/password combination'})
+        }
+        //added session data to user login
+        req.session.user = {
+            id:foundUser.user_id,
+            username:foundUser.username
         }
         return res.json(foundUser)
     } catch (err) {

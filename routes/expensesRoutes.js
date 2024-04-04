@@ -6,7 +6,14 @@ const {Expense} = require("../models");
 router.get("/", async (req, res) => {
 try {
     const data = await Expense.findAll();
-    res.json(data);
+    
+    
+    expenses = data.map(function(expenseObj){
+        return expenseObj.toJSON()
+    })
+    console.log(expenses)
+    // res.json(data);
+    res.render('landing', {expenses:expenses})
 } catch (err) {
     console.log(err);
     res.status(500).json({ msg: "error occurred", err });
@@ -19,6 +26,7 @@ Expense.findByPk(req.params.id).then((data) => {
     if(data==null){
     return res.status(404).json({msg:"does not exist!"})
     }
+    // res.render('expenses')
     res.json(data);
 }).catch(err=>{
     console.log(err);
@@ -27,18 +35,25 @@ Expense.findByPk(req.params.id).then((data) => {
 });
 
 // POST (CREATE)
-router.post('/', (req, res) => {
-// create a new Expense
-Expense.create({
-    user_id:req.body.user_id,
-    category:req.body.category,
-    amount:req.body.amount,
-    description:req.body.description,
-}
-).then(data=>{
-    res.json(data)
-})
+router.post('/', async (req, res) => {
+    if (!req.session.user) {
+        return res.status(403).json({ msg: 'login first' });
+    }
+
+    try {
+        const data = await Expense.create({
+            user_id: req.session.user.id,
+            category: req.body.category,
+            amount: req.body.amount,
+            description: req.body.description,
+        });
+        res.status(201).json(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "error occurred", err });
+    }
 });
+
 
 // DELETE
 router.delete("/:id", (req, res) => {
