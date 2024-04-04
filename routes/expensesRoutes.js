@@ -35,18 +35,25 @@ Expense.findByPk(req.params.id).then((data) => {
 });
 
 // POST (CREATE)
-router.post('/', (req, res) => {
-// create a new Expense
-Expense.create({
-    user_id:req.body.user_id,
-    category:req.body.category,
-    amount:req.body.amount,
-    description:req.body.description,
-}
-).then(data=>{
-    res.json(data)
-})
+router.post('/', async (req, res) => {
+    if (!req.session.user) {
+        return res.status(403).json({ msg: 'login first' });
+    }
+
+    try {
+        const data = await Expense.create({
+            user_id: req.session.user.id,
+            category: req.body.category,
+            amount: req.body.amount,
+            description: req.body.description,
+        });
+        res.status(201).json(data);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "error occurred", err });
+    }
 });
+
 
 // DELETE
 router.delete("/:id", (req, res) => {

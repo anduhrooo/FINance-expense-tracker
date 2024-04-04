@@ -22,4 +22,15 @@ router.get('/profile', async (reg, res) => {
     res.render('profile');
 });
 
+router.get('/sessiondata', (req, res)=>{
+    res.json(req.session)
+})
+
+router.get('/protecc', (req,res)=>{
+    if(!req.session.user){
+        return res.status(403).json({msg:'login first'})
+    }
+    res.send('welcome')
+})
+
 module.exports = router;
