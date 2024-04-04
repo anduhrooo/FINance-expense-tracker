@@ -8,7 +8,7 @@ try {
     const data = await Expense.findAll();
     
     
-    expenses = data.map(function(expenseObj){
+    const expenses = data.map(function(expenseObj){
         return expenseObj.toJSON()
     })
     console.log(expenses)
