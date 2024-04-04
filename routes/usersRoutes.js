@@ -56,6 +56,11 @@ router.post("/login", async (req, res) => {
         if(!bcrypt.compareSync(req.body.password, foundUser.password)){
             return res.status(401).json({msg:'invalid user/password combination'})
         }
+        //added session data to user login
+        req.session.user = {
+            id:foundUser.user_id,
+            username:foundUser.username
+        }
         return res.json(foundUser)
     } catch (err) {
         console.log(err);

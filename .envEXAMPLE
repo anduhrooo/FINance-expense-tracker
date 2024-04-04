@@ -1,0 +1,4 @@
+DB_NAME="finance_db"
+DB_USER="postgres"
+DB_PASSWORD="password"
+SESSION_SECRET="keyboard cat"
