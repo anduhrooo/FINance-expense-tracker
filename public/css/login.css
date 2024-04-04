@@ -328,6 +328,7 @@ input[type="submit"]:hover {
   z-index: 99999;
   height: 125px;
   width: 100%;
+  column-count: 2;
 }
 
 .github{
@@ -336,15 +337,28 @@ input[type="submit"]:hover {
   display: flex;
   justify-content: space-between;
   margin: 20px;
-  /* padding: 10px; */
   padding-bottom: 50px;
   font-size: 20px;
   bottom: 10;
+  width: 100%;
+}
+
+.footerLeft{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 30px;
+  width: 100%;
+  
 }
 
 .footerMiddle{ 
   column-count: 1;
+  position: relative;
+  left: 50%;
 }
+
+
 
 .fishIMG{
   position: relative;
@@ -393,6 +407,24 @@ input[type="submit"]:hover {
   }
 }
 
+@media screen and (max-width: 1100px){
+  .footer{
+    background-color: red;
+
+  }
+  
+  .github{
+    /* display: flex;
+    justify-content: flex-end; */
+    column-count: 2;
+  }
+
+  .footerMiddle{
+    
+  }
+}
+
+
 @media screen and (max-width: 820px){
   .footer{
     background-color: red;
@@ -405,7 +437,7 @@ input[type="submit"]:hover {
   }
 
   .footerMiddle{
-   visibility: none;
+
   }
 }
 
