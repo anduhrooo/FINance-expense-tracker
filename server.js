@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const sequelize = require('./config/connection');
 const path = require('path');
+const { sendEmail } = require('./utils/index');
 // import sequelize connection
 
 const app = express();
@@ -18,6 +19,9 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+
+//Calls the sendEmail Function
+sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
 
 // sync sequelize models to the database, then turn on the server
 
