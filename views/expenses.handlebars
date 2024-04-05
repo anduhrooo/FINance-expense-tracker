@@ -6,13 +6,15 @@
     <div id="income__bar">
         <div>
             <section id="total__spent">
-                
-                {{#each users}}
-                    <h3>Monthly Income: ${{first_name}}</h3>
-                {{/each}}
 
+                {{#select user 1}}
+                  <h3>Hello {{first_name}}! Your income is: ${{income}} </h3>
+                {{/select}}
+                {{#selectAll expenses}}
+                  {{amount}}
+                {{/selectAll}}
                 <!-- ======== Placeholder ======== -->
-                
+                {{!-- <h3>Monthly Income: $$$$</h3> --}}
                 <!-- ======== Placeholder ======== -->
 
             </section>
@@ -86,26 +88,30 @@
                 <h2 style="text-align:center">Expense List</h2>
                 <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
             </section>
-<!-- The Modal -->
 
-<div id="expenseModal" class="addExpenseModal">
-  <div class="modal-content">
-    <h2>Add Your Expense</h2>
-    <select id="expenseCategory">
-      <option value="Dining Out">Dining Out</option>
-      <option value="Gas">Gas</option>
-      <option value="Groceries">Groceries</option>
-      <option value="Utilities">Utilities</option>
-      <option value="Rent">Rent</option>
-      <option value="Misc">Misc.</option>
-      <option value="Other">Other</option>
-    </select>
-    <input type="text" id="expenseName" placeholder="Expense Name">
-    <input type="number" id="expenseAmount" placeholder="Expense Amount">
-    <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
-    <span class="close-modal">&times;</span>
-  </div>
-</div>
+            <!-- The Modal -->
+
+            <div id="expenseModal" class="addExpenseModal">
+              <div class="modal-content">
+                <h2>Add Your Expense</h2>
+                <select id="expenseCategory">
+                  <option value="Dining Out">Dining Out</option>
+                  <option value="Gas">Gas</option>
+                  <option value="Groceries">Groceries</option>
+                  <option value="Utilities">Utilities</option>
+                  <option value="Rent">Rent</option>
+                  <option value="Misc">Misc.</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" id="expenseName" placeholder="Expense Name">
+                <input type="number" id="expenseAmount" placeholder="Expense Amount">
+                <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
+                <span class="close-modal">&times;</span>
+              </div>
+            </div>
+            
+            <section id="expense__cards">
+
 
                 {{#each expenses}}
                 <p class="card">({{category}}) {{description}}: ${{amount}}</p>
@@ -119,4 +125,8 @@
 
         </div>
     </div>
+
     <script src="/js/expenses.js"></script>
+
+    <script src="js/expenses.js"></script>
+
