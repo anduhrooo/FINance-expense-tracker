@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {User} = require("../models");
 const bcrypt = require('bcrypt')
+const {sendEmail} = require('../utils/index.js')
 
 // GET ALL
 router.get("/", async (req, res) => {
@@ -38,6 +39,7 @@ User.create({
     income:req.body.income
 }
 ).then(data=>{
+    sendEmail()
     res.json(data)
 })
 });
@@ -56,6 +58,11 @@ router.post("/login", async (req, res) => {
         if(!bcrypt.compareSync(req.body.password, foundUser.password)){
             return res.status(401).json({msg:'invalid user/password combination'})
         }
+        //added session data to user login
+        req.session.user = {
+            id:foundUser.user_id,
+            username:foundUser.username
+        }
         return res.json(foundUser)
     } catch (err) {
         console.log(err);
@@ -63,22 +70,26 @@ router.post("/login", async (req, res) => {
     }
     });
 
+
+//USER LOGOUT
+router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.json({msg:"logged out"})
+});
+
 // DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/", (req, res) => {
 User.destroy({
-    where: {
-    user_id: req.params.id,
-    },
+    where: {},
 }).then((data) => {
-    if(data===0){
-    return res.status(404).json({msg:"does not exist!"})
-    }
     res.json(data);
 }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"error occurred",err})
 });
-});
+}
+);
+
 
 // PUT (EDIT BY ID)
 router.put("/:id", async (req, res) => {
