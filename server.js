@@ -7,7 +7,7 @@ const path = require('path');
 
 
 
-const { sendEmail } = require('./utils/index');
+const { sendEmail } = require('./index');
 
 
 const session = require("express-session")
