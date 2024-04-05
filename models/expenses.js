@@ -15,6 +15,10 @@ Expense.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'users',
+        key: 'user_id',
+      },
     },
   category:{
     type: DataTypes.ENUM('Dining Out', 'Groceries', 'Gas', 'Subscriptions', 'Utilities', 'Rent', 'Entertainment', 'Savings', 'Misc'),
