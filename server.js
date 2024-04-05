@@ -21,16 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const sess = {
-    secret:process.env.SESSION_SECRET,
-    cookie: {
-        maxAge: 1000*60*60*24
-    },
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
-        db:sequelize
+        db: sequelize
     })
-}
+};
 
 app.use(session(sess));
 
@@ -42,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 //Calls the sendEmail Function
-sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
+// sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
 
 // sync sequelize models to the database, then turn on the server
 

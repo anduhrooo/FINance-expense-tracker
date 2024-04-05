@@ -68,22 +68,26 @@ router.post("/login", async (req, res) => {
     }
     });
 
+
+//USER LOGOUT
+router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.json({msg:"logged out"})
+});
+
 // DELETE
-router.delete("/:id", (req, res) => {
+router.delete("/", (req, res) => {
 User.destroy({
-    where: {
-    user_id: req.params.id,
-    },
+    where: {},
 }).then((data) => {
-    if(data===0){
-    return res.status(404).json({msg:"does not exist!"})
-    }
     res.json(data);
 }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"error occurred",err})
 });
-});
+}
+);
+
 
 // PUT (EDIT BY ID)
 router.put("/:id", async (req, res) => {
