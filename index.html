@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/css/index.css">
+    <link rel="stylesheet" href="public/css/expenses.css">
+    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/landing.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -48,8 +50,35 @@
             <!-- Section for chart display -->
             <section id="chart">
                 
+                
+                <canvas id="myChart"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctx = document.getElementById('myChart');
+                  
+                    new Chart(ctx, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                          label: '# of Votes',
+                          data: [12, 19, 3, 5, 2, 3],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
+                    });
+                  </script>
+
+
                 <!-- ========== DEMO CHART ========== -->
-                <img src="demo-piechart.png" id="demo-piechart">
+                <!-- <img src="demo-piechart.png" id="demo-piechart"> -->
                 <!-- ========== DEMO CHART ========== -->
 
             </section>

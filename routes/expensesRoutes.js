@@ -3,14 +3,23 @@ const router = express.Router();
 const {Expense} = require("../models");
 
 router.get("/", async (req, res) => {
-    try {
-        const data = await Expense.findAll();
-        res.json(data);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ msg: "error occurred", err });
-    }
-    });
+
+try {
+    const data = await Expense.findAll();
+    
+    
+    const expenses = data.map(function(expenseObj){
+        return expenseObj.toJSON()
+    })
+    console.log(expenses)
+    // res.json(data);
+    res.render('landing', {expenses:expenses})
+} catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "error occurred", err });
+}
+});
+
 
 // GET BY ID
 router.get("/:id", (req, res) => {

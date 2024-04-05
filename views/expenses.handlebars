@@ -3,13 +3,16 @@
     <link rel="stylesheet" href="css/expenses.css">
 </head>
 
-
     <div id="income__bar">
         <div>
             <section id="total__spent">
                 
+                {{#each users}}
+                    <h3>Monthly Income: ${{first_name}}</h3>
+                {{/each}}
+
                 <!-- ======== Placeholder ======== -->
-                <h3>Monthly Income: $$$$$</h1>
+                
                 <!-- ======== Placeholder ======== -->
 
             </section>
@@ -23,8 +26,34 @@
             <!-- Section for chart display -->
             <section id="chart">
                 
+                
+                <canvas id="myChart" style="margin:0 auto"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctx = document.getElementById('myChart');
+                  
+                    new Chart(ctx, {
+                      type: 'doughnut',
+                      data: {
+                        labels: ['Dining Out', 'Groceries', 'Gas', 'Subscriptions', 'Utilities', 'Rent', 'Entertainment', 'Savings', 'Misc'],
+                        datasets: [{
+                          label: 'Monthly Expense',
+                          data: [12, 19, 3, 5, 2, 3, 6, 8, 4],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        plugins: {
+                            legend: false,
+                        },
+                      },
+                    });
+                  </script>
+
+
+
                 <!-- ========== DEMO CHART ========== -->
-                <img src="demo-piechart.png" id="demo-piechart">
+                {{!-- <img src="demo-piechart.png" id="demo-piechart"> --}}
                 <!-- ========== DEMO CHART ========== -->
 
             </section>
@@ -33,10 +62,16 @@
             <section id="summary__text">
                 
                 <!-- ========== DEMO TEXT ========== -->
-                <p> Bills: $$$$ <br>
-                    Food: $$$ <br>
-                    Other: $$$ <br>
-                    Subscriptions: $$ <br>
+                <p> 
+                    Dining Out: 12 <br>
+                    Groceries: 19 <br>
+                    Gas: 3 <br>
+                    Subscriptions: 5 <br>
+                    Utilities: 2 <br>
+                    Rent: 3 <br>
+                    Entertainment: 6 <br>
+                    Savings: 8 <br>
+                    Misc: 4 <br>
                 </p>
                 <!-- ========== DEMO TEXT ========== -->
 
@@ -66,25 +101,13 @@
 </div>
             
             <section id="expense__cards">
-                
-                {{!-- {{#each}} --}}
 
+                {{#each expenses}}
+                <p class="card">({{category}}) {{description}}: ${{amount}}</p>
+                {{/each}}
+                
                 <!-- ========== DEMO CARDS ========== -->
-                {{!-- <p class="card">Demo Card #01: $$$</p>
-                <p class="card">Demo Card #02: $$$</p>
-                <p class="card">Demo Card #03: $$$</p>
-                <p class="card">Demo Card #04: $$$</p>
-                <p class="card">Demo Card #05: $$$</p>
-                <p class="card">Demo Card #06: $$$</p>
-                <p class="card">Demo Card #07: $$$</p>
-                <p class="card">Demo Card #08: $$$</p>
-                <p class="card">Demo Card #09: $$$</p>
-                <p class="card">Demo Card #10: $$$</p>
-                <p class="card">Demo Card #11: $$$</p>
-                <p class="card">Demo Card #12: $$$</p>
-                <p class="card">Demo Card #13: $$$</p>
-                <p class="card">Demo Card #14: $$$</p>
-                <p class="card">Demo Card #15: $$$</p> --}}
+                {{!-- <p class="card">Demo Card: $$$</p> --}}
                 <!-- ========== DEMO CARDS ========== -->
 
             </section>
