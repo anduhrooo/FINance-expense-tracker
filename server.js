@@ -4,6 +4,7 @@ const routes = require('./routes');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
+const { sendEmail } = require('./utils/index.js')
 
 const { sendEmail } = require('./utils/index');
 

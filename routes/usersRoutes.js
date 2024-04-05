@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {User} = require("../models");
 const bcrypt = require('bcrypt')
+const {sendEmail} = require('../utils/index.js')
 
 // GET ALL
 router.get("/", async (req, res) => {
@@ -38,6 +39,7 @@ User.create({
     income:req.body.income
 }
 ).then(data=>{
+    sendEmail()
     res.json(data)
 })
 });

@@ -45,3 +45,5 @@ function sendEmail(to, subject, template, context) {
 // Calling the function
 sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage')
 //sendEmail('email@domain.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage', { userName: 'John Doe' })
+
+module.exports = {sendEmail};
