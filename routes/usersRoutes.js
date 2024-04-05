@@ -39,7 +39,7 @@ User.create({
     income:req.body.income
 }
 ).then(data=>{
-    sendEmail()
+    sendEmail(req.body.email, 'User Account Created!', 'welcomeMessage')
     res.json(data)
 })
 });

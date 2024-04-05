@@ -40,9 +40,6 @@ const hbs = exphbs.create({
     }
 });
 
-const { sendEmail } = require('./index');
-
-
 const session = require("express-session")
 
 // import sequelize connection
@@ -76,7 +73,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 //Calls the sendEmail Function
-sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
+// sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
 
 // sync sequelize models to the database, then turn on the server
 

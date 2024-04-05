@@ -13,13 +13,13 @@ navItemEls.forEach(navItemEl => {
     hamburgerEl.classList.remove('hamburger--open');
   });
 });
-var modal = document.getElementById("modal");
+let modal = document.getElementById("modal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("openModalBtn");
+let btn = document.getElementById("openModalBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
