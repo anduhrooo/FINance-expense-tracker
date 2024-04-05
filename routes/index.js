@@ -19,9 +19,9 @@ router.get('/expenses', async (reg, res) => {
         return userObj.toJSON()
     })
     
-    res.render('expenses', {expenses:expenses});
-    // console.log(expenses);
-    // console.log(user);
+    res.render('expenses', {expenses:expenses, user:user});
+    console.log(expenses);
+    console.log(user);
 });
 
 router.get('/', async (reg, res) => {
