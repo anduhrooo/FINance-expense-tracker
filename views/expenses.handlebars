@@ -6,13 +6,15 @@
     <div id="income__bar">
         <div>
             <section id="total__spent">
-                
-                {{#each users}}
-                    <h3>Monthly Income: ${{first_name}}</h3>
-                {{/each}}
 
+                {{#select user 1}}
+                  <h3>Hello {{first_name}}! Your income is: ${{income}} </h3>
+                {{/select}}
+                {{#selectAll expenses}}
+                  {{amount}}
+                {{/selectAll}}
                 <!-- ======== Placeholder ======== -->
-                
+                {{!-- <h3>Monthly Income: $$$$</h3> --}}
                 <!-- ======== Placeholder ======== -->
 
             </section>
@@ -86,19 +88,19 @@
                 <h2 style="text-align:center">Expense List</h2>
                 <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
             </section>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Modal Title</h3>
-    <p>Modal content goes here.</p>
-    <!-- Logo -->
-    <div class="logo-container">
-      <img src="path_to_your_logo.png" alt="Logo" class="logo">
-    </div>
-  </div>
-</div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Modal Title</h3>
+                <p>Modal content goes here.</p>
+                <!-- Logo -->
+                <div class="logo-container">
+                  <img src="path_to_your_logo.png" alt="Logo" class="logo">
+                </div>
+              </div>
+            </div>
             
             <section id="expense__cards">
 
@@ -114,4 +116,5 @@
 
         </div>
     </div>
-    <script src="/public/js/expenses.js"></script>
+    <script src="js/expenses.js"></script>
+    {{!-- <script src="utils/handlebar_helpers.js"></script> --}}
