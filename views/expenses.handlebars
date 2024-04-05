@@ -87,20 +87,25 @@
                 <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
             </section>
 <!-- The Modal -->
-<div id="myModal" class="modal">
-  <!-- Modal content -->
+
+<div id="expenseModal" class="addExpenseModal">
   <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Modal Title</h3>
-    <p>Modal content goes here.</p>
-    <!-- Logo -->
-    <div class="logo-container">
-      <img src="path_to_your_logo.png" alt="Logo" class="logo">
-    </div>
+    <h2>Add Your Expense</h2>
+    <select id="expenseCategory">
+      <option value="Dining Out">Dining Out</option>
+      <option value="Gas">Gas</option>
+      <option value="Groceries">Groceries</option>
+      <option value="Utilities">Utilities</option>
+      <option value="Rent">Rent</option>
+      <option value="Misc">Misc.</option>
+      <option value="Other">Other</option>
+    </select>
+    <input type="text" id="expenseName" placeholder="Expense Name">
+    <input type="number" id="expenseAmount" placeholder="Expense Amount">
+    <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
+    <span class="close-modal">&times;</span>
   </div>
 </div>
-            
-            <section id="expense__cards">
 
                 {{#each expenses}}
                 <p class="card">({{category}}) {{description}}: ${{amount}}</p>
@@ -114,4 +119,4 @@
 
         </div>
     </div>
-    <script src="/public/js/expenses.js"></script>
+    <script src="/js/expenses.js"></script>
