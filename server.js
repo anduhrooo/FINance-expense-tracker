@@ -4,7 +4,11 @@ const routes = require('./routes');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const path = require('path');
-const { sendEmail } = require('./index.js')
+
+
+
+const { sendEmail } = require('./utils/index');
+
 
 const session = require("express-session")
 
@@ -39,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
 //Calls the sendEmail Function
-// sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
+sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
 
 // sync sequelize models to the database, then turn on the server
 

@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 });
 
 //TODO: does not block user from editing other user's expenses
-// PUT (EDIT BY ID)
+// // PUT (EDIT BY ID)
 
 router.put('/:id', async (req, res) => {
     try {
