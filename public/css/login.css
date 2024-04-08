@@ -352,14 +352,10 @@ input[type="submit"]:hover {
   
 }
 
-.footerRight{
-  width:100%;
-}
-
 .footerMiddle{ 
   column-count: 1;
   position: relative;
-  left: 40%;
+  left: 50%;
 }
 
 .copyright{
