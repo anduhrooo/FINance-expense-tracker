@@ -358,7 +358,9 @@ input[type="submit"]:hover {
   left: 50%;
 }
 
-
+.copyright{
+  color:white
+}
 
 .fishIMG{
   position: relative;
@@ -408,36 +410,35 @@ input[type="submit"]:hover {
 }
 
 @media screen and (max-width: 1100px){
-  .footer{
-    background-color: red;
+  /* .footer{
+    background-color: green;
 
-  }
-  
-  .github{
-    /* display: flex;
-    justify-content: flex-end; */
-    column-count: 2;
+  } */
+
+  .footerLeft{
+    display: flex;
+    justify-content: space-evenly;
   }
 
-  .footerMiddle{
-    
-  }
 }
 
 
-@media screen and (max-width: 820px){
-  .footer{
+@media screen and (max-width: 770px){
+  /* .footer{
     background-color: red;
 
-  }
+  } */
   
   .github{
     display: flex;
     justify-content: flex-end;
   }
 
-  .footerMiddle{
-
+  .footerLeft{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom:5px;
   }
+
 }
 
