@@ -3,14 +3,16 @@
     <link rel="stylesheet" href="css/expenses.css">
 </head>
 
-
     <div id="income__bar">
         <div>
             <section id="total__spent">
-                
-                <!-- ======== Placeholder ======== -->
-                <h3>Monthly Income: $$$$$</h1>
-                <!-- ======== Placeholder ======== -->
+                <div>
+                  <h1>Welcome, {{first_name}} {{last_name}}!</h1>
+                  <h2>Monthly Income</h2>
+                  <h3>${{income}}</h3>
+                  <h2>Contact Info</h2>
+                  <h3>{{email}}</h3>
+                </div>
 
             </section>
         </div>
@@ -23,9 +25,29 @@
             <!-- Section for chart display -->
             <section id="chart">
                 
-                <!-- ========== DEMO CHART ========== -->
-                <img src="demo-piechart.png" id="demo-piechart">
-                <!-- ========== DEMO CHART ========== -->
+                
+                <canvas id="myChart" style="margin:0 auto"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctx = document.getElementById('myChart');
+                  
+                    new Chart(ctx, {
+                      type: 'doughnut',
+                      data: {
+                        labels: ['Dining Out', 'Groceries', 'Gas', 'Subscriptions', 'Utilities', 'Rent', 'Entertainment', 'Savings', 'Misc'],
+                        datasets: [{
+                          label: 'Monthly Expense',
+                          data: [12, 19, 3, 5, 2, 3, 6, 8, 4],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        plugins: {
+                            legend: false,
+                        },
+                      },
+                    });
+                  </script>
 
             </section>
 
@@ -33,10 +55,16 @@
             <section id="summary__text">
                 
                 <!-- ========== DEMO TEXT ========== -->
-                <p> Bills: $$$$ <br>
-                    Food: $$$ <br>
-                    Other: $$$ <br>
-                    Subscriptions: $$ <br>
+                <p> 
+                    Dining Out: 12 <br>
+                    Groceries: 19 <br>
+                    Gas: 3 <br>
+                    Subscriptions: 5 <br>
+                    Utilities: 2 <br>
+                    Rent: 3 <br>
+                    Entertainment: 6 <br>
+                    Savings: 8 <br>
+                    Misc: 4 <br>
                 </p>
                 <!-- ========== DEMO TEXT ========== -->
 
@@ -51,30 +79,39 @@
                 <h2 style="text-align:center">Expense List</h2>
                 <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
             </section>
+
             
             <section id="expense__cards">
-                
-                {{!-- {{#each}} --}}
 
-                <!-- ========== DEMO CARDS ========== -->
-                {{!-- <p class="card">Demo Card #01: $$$</p>
-                <p class="card">Demo Card #02: $$$</p>
-                <p class="card">Demo Card #03: $$$</p>
-                <p class="card">Demo Card #04: $$$</p>
-                <p class="card">Demo Card #05: $$$</p>
-                <p class="card">Demo Card #06: $$$</p>
-                <p class="card">Demo Card #07: $$$</p>
-                <p class="card">Demo Card #08: $$$</p>
-                <p class="card">Demo Card #09: $$$</p>
-                <p class="card">Demo Card #10: $$$</p>
-                <p class="card">Demo Card #11: $$$</p>
-                <p class="card">Demo Card #12: $$$</p>
-                <p class="card">Demo Card #13: $$$</p>
-                <p class="card">Demo Card #14: $$$</p>
-                <p class="card">Demo Card #15: $$$</p> --}}
-                <!-- ========== DEMO CARDS ========== -->
+            <!-- The Modal -->
+
+            <div id="expenseModal" class="addExpenseModal">
+              <div class="modal-content">
+                <h2>Add Your Expense</h2>
+                <select id="expenseCategory">
+                  <option value="Dining Out">Dining Out</option>
+                  <option value="Gas">Gas</option>
+                  <option value="Groceries">Groceries</option>
+                  <option value="Utilities">Utilities</option>
+                  <option value="Rent">Rent</option>
+                  <option value="Misc">Misc.</option>
+                  <option value="Other">Other</option>
+                </select>
+                <input type="text" id="expenseName" placeholder="Expense Name">
+                <input type="number" id="expenseAmount" placeholder="Expense Amount">
+                <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
+                <span class="close-modal">&times;</span>
+              </div>
+            </div>
+
+
+                {{#each expenses}}
+                <p class="card">({{category}}) {{description}}: ${{amount}}</p>
+                {{/each}}
+
 
             </section>
 
         </div>
     </div>
+    <script src="/js/expenses.js"></script>

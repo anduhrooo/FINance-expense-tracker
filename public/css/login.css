@@ -391,7 +391,7 @@ input[type="submit"]:hover {
 }
 
 /*Merges Create Account and Login when the screen shrinks*/
-@media screen and (max-width: 1500px ) {
+@media screen and (max-width: 1100px ) {
   .card-one, .card-two{
    display:none;
   }

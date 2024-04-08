@@ -1,3 +1,4 @@
+require('dotenv').config()
 const nodemailer = require('nodemailer')
 const hbsMailer = require('nodemailer-express-handlebars')
 
@@ -15,7 +16,7 @@ const hbsOptions = {
     viewEngine: {
         partialsDir: 'views',
         layoutsDir: 'views',
-        defaultLayout: 'baseMessage'
+        defaultLayout: 'welcomeMessage'
     },
     viewPath: 'views'
 }
@@ -43,5 +44,7 @@ function sendEmail(to, subject, template, context) {
 }
 
 // Calling the function
-sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage')
+// sendEmail('briancordovabusiness@gmail.com', 'User Account Created!', 'welcomeMessage')
 //sendEmail('email@domain.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage', { userName: 'John Doe' })
+
+module.exports = {sendEmail};

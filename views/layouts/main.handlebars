@@ -22,17 +22,38 @@
             </a>
             <nav class="nav">
               <ul class="nav__list">
+                {{#if loggedIn}}
+                {{!-- <li class="nav__item">
+                  <a class="nav__link" href="/profile">Profile</a>
+                </li> --}}
+                <button id="logout">LOGOUT</button>
+                {{else}}
+                {{!-- <li class="nav__item">
+                  <a class="nav__link" href="/">Home</a>
+                </li> --}}
                 <li class="nav__item">
-                  <a class="nav__link" href="landing.html">Home</a>
+                  <a class="nav__link" href="/login">Login</a>
                 </li>
-                <li class="nav__item">
-                  <a class="nav__link" href="#"></a>
-                </li>
+                {{/if}}
                 <li class="nav__item">
                   <a class="btn" id="openModalBtn" href="#">Contact</a>
                 </li>
               </ul>
             </nav>
+            <script>
+                const logout = async () => {
+                const response = await fetch('/api/users/logout', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                });
+                if (response.ok) {
+                  document.location.replace('/');
+                } else {
+                  alert(response.statusText);
+                }
+                };
+                document.querySelector('#logout').addEventListener('click', logout);
+            </script>
             <div id="modal" class="modal">
               <div class="modal-content">
                   <span class="close">&times;</span>
@@ -41,7 +62,7 @@
                   <strong>Keanu Ford:</strong> <a href="https://github.com/anduhrooo" target="_blank">Github Repository</a></p><br>
                   <strong>Bradley Wallace:</strong> <a href="https://github.com/anduhrooo" target="_blank">Github Repository</a></p><br>
                   <strong>Brian Cordova:</strong> <a href="https://github.com/anduhrooo" target="_blank">Github Repository</a></p>
-                  <img src="public/fish.webp" alt="logo" />
+                  <img src="fish.webp" alt="logo" />
               </div>
           </div>
             <div class="hamburger">
@@ -49,7 +70,7 @@
               <div class="bar"></div>
               <div class="bar"></div>
             </div>
-          </div>
+            </div>
         </div>
       </header>
     <main>
@@ -62,6 +83,6 @@
             <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
         </svg>
     </div>
-    <script src="public/js/login.js"></script>
+    <script src="/js/landing.js"></script>
 </body>
 </html>
