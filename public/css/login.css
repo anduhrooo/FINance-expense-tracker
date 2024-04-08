@@ -322,24 +322,53 @@ input[type="submit"]:hover {
 }
 /*///////////////////////Footer/////////////////////////*/
 .footer{
-  border: black 80px;
+  background-color: #1560BD;
   bottom: 0;
   position: fixed;
   z-index: 99999;
-  height: 50px;
+  height: 125px;
   width: 100%;
+  column-count: 2;
 }
 
 .github{
-  color: black;
+  color: White;
   z-index: 999999;
   display: flex;
   justify-content: space-between;
   margin: 20px;
-  padding-bottom: 60px;
-  padding: 10px;
+  padding-bottom: 50px;
   font-size: 20px;
+  bottom: 10;
+  width: 100%;
+}
+
+.footerLeft{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 30px;
+  width: 100%;
   
+}
+
+.footerRight{
+  width:100%;
+}
+
+.footerMiddle{ 
+  column-count: 1;
+  position: relative;
+  left: 40%;
+}
+
+.copyright{
+  color:white
+}
+
+.fishIMG{
+  position: relative;
+  left: 30px;
 }
 /* //////////////////////Divider////////////////////// */
 
@@ -382,5 +411,38 @@ input[type="submit"]:hover {
     justify-content: center;
     margin-top: 50px;
   }
+}
+
+@media screen and (max-width: 1100px){
+  /* .footer{
+    background-color: green;
+
+  } */
+
+  .footerLeft{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+}
+
+
+@media screen and (max-width: 770px){
+  /* .footer{
+    background-color: red;
+
+  } */
+  
+  .github{
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .footerLeft{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom:5px;
+  }
+
 }
 
