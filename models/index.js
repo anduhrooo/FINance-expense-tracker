@@ -6,8 +6,11 @@ User.hasMany(Expense, {
     onDelete: 'CASCADE'
 });
 
+Expense.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
 module.exports = {
     User,
-    Expense,
-
+    Expense
 }

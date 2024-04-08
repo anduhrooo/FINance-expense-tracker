@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {User} = require("../models");
+const {User} = require("../../models/index.js");
 const bcrypt = require('bcrypt')
-const {sendEmail} = require('../index.js')
+const {sendEmail} = require('../../index.js')
 
 // GET ALL
 router.get("/", async (req, res) => {
@@ -27,22 +27,30 @@ router.get("/:id", async (req, res) => {
     };
 });
 
-// POST (CREATE)
-router.post('/', (req, res) => {
-// create a new User
-User.create({
-    first_name:req.body.first_name,
-    last_name:req.body.last_name,
-    username:req.body.username,
-    email:req.body.email,
-    password:req.body.password,
-    income:req.body.income
+router.post("/", async (req, res) => {
+    try {
+        const userData = await User.create({
+                first_name:req.body.first_name,
+                last_name:req.body.last_name,
+                username:req.body.username,
+                email:req.body.email,
+                password:req.body.password,
+                income:req.body.income
+            });
+        //added session data to user login
+        req.session.user = {
+            id:userData.user_id,
+            username:userData.username
+        }
+        req.session.loggedIn = true
+        sendEmail(req.body.email, 'User Account Created!', 'welcomeMessage')
+        res.json(userData);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ msg: "error occurred", err });
+    }
 }
-).then(data=>{
-    sendEmail(req.body.email, 'User Account Created!', 'welcomeMessage')
-    res.json(data)
-})
-});
+);
 
 //USER LOGIN
 router.post("/login", async (req, res) => {
@@ -63,10 +71,12 @@ router.post("/login", async (req, res) => {
             id:foundUser.user_id,
             username:foundUser.username
         }
+        req.session.loggedIn = true
         return res.json(foundUser)
     } catch (err) {
         console.log(err);
         res.status(500).json({ msg: "error occurred", err });
+        
     }
     });
 

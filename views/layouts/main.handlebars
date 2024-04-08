@@ -22,17 +22,38 @@
             </a>
             <nav class="nav">
               <ul class="nav__list">
-                <li class="nav__item">
+                {{#if loggedIn}}
+                {{!-- <li class="nav__item">
+                  <a class="nav__link" href="/profile">Profile</a>
+                </li> --}}
+                <button id="logout">LOGOUT</button>
+                {{else}}
+                {{!-- <li class="nav__item">
                   <a class="nav__link" href="/">Home</a>
-                </li>
+                </li> --}}
                 <li class="nav__item">
                   <a class="nav__link" href="/login">Login</a>
                 </li>
+                {{/if}}
                 <li class="nav__item">
                   <a class="btn" id="openModalBtn" href="#">Contact</a>
                 </li>
               </ul>
             </nav>
+            <script>
+                const logout = async () => {
+                const response = await fetch('/api/users/logout', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                });
+                if (response.ok) {
+                  document.location.replace('/');
+                } else {
+                  alert(response.statusText);
+                }
+                };
+                document.querySelector('#logout').addEventListener('click', logout);
+            </script>
             <div id="modal" class="modal">
               <div class="modal-content">
                   <span class="close">&times;</span>

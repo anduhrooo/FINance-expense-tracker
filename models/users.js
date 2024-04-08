@@ -45,6 +45,7 @@ User.init(
   },
   {
     sequelize,
+    // modelName: 'user',
     hooks:{
       beforeCreate:userObj=>{
         userObj.password = bcrypt.hashSync(userObj.password, 3)

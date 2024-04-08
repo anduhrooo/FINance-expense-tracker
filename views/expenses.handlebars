@@ -6,16 +6,13 @@
     <div id="income__bar">
         <div>
             <section id="total__spent">
-
-                {{#select user 1}}
-                  <h3>Hello {{first_name}}! Your income is: ${{income}} </h3>
-                {{/select}}
-                {{#selectAll expenses}}
-                  {{amount}}
-                {{/selectAll}}
-                <!-- ======== Placeholder ======== -->
-                {{!-- <h3>Monthly Income: $$$$</h3> --}}
-                <!-- ======== Placeholder ======== -->
+                <div>
+                  <h1>Welcome, {{first_name}} {{last_name}}!</h1>
+                  <h2>Monthly Income</h2>
+                  <h3>${{income}}</h3>
+                  <h2>Contact Info</h2>
+                  <h3>{{email}}</h3>
+                </div>
 
             </section>
         </div>
@@ -52,12 +49,6 @@
                     });
                   </script>
 
-
-
-                <!-- ========== DEMO CHART ========== -->
-                {{!-- <img src="demo-piechart.png" id="demo-piechart"> --}}
-                <!-- ========== DEMO CHART ========== -->
-
             </section>
 
             <!-- Section for text summary -->
@@ -89,6 +80,9 @@
                 <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
             </section>
 
+            
+            <section id="expense__cards">
+
             <!-- The Modal -->
 
             <div id="expenseModal" class="addExpenseModal">
@@ -109,17 +103,12 @@
                 <span class="close-modal">&times;</span>
               </div>
             </div>
-            
-            <section id="expense__cards">
 
 
                 {{#each expenses}}
                 <p class="card">({{category}}) {{description}}: ${{amount}}</p>
                 {{/each}}
-                
-                <!-- ========== DEMO CARDS ========== -->
-                {{!-- <p class="card">Demo Card: $$$</p> --}}
-                <!-- ========== DEMO CARDS ========== -->
+
 
             </section>
 
@@ -127,6 +116,4 @@
     </div>
 
     <script src="/js/expenses.js"></script>
-
-    <script src="js/expenses.js"></script>
 
