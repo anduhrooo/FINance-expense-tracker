@@ -3,42 +3,42 @@ const express = require('express');
 const routes = require('./routes');
 const exphbs = require('express-handlebars');
 const path = require('path');
-
-const hbs = exphbs.create({
-    helpers: {
-        select: function (context, index, options) {
-            var ret = "";
-            ret = ret + options.fn(context[index]);
-            return ret;
-        },
-        selectAll: function (context, options) {
-            var num;
-            var ret = 0;
-            for (var i = 0, j = context.length; i < j; i++) {
-                num = parseInt(options.fn(context[i]));
-                ret = ret + num;
-                console.log("ret: " + ret);
-                console.log("num: " + num);
-                console.log("context: " + options.fn(context[i]));
-            }
-            return ret;
-        },
-        // total: function (context, options) {
-        //     var ret = 0;
-        //     for (var i = 0, j = context.length; i < j; i++) {
-        //         ret = ret + options.fn(context[i])
-        //     }
-        //     return ret;
-        // },
-        list: function (context, options) {
-            var ret = "";
-            for (var i = 0, j = context.length; i < j; i++) {
-                ret = ret + options.fn(context[i]);
-            }
-            return ret;
-        }
-    }
-});
+const hbs = exphbs.create({});
+// const hbs = exphbs.create({
+//     helpers: {
+//         select: function (context, index, options) {
+//             var ret = "";
+//             ret = ret + options.fn(context[index]);
+//             return ret;
+//         },
+//         selectAll: function (context, options) {
+//             var num;
+//             var ret = 0;
+//             for (var i = 0, j = context.length; i < j; i++) {
+//                 num = parseInt(options.fn(context[i]));
+//                 ret = ret + num;
+//                 console.log("ret: " + ret);
+//                 console.log("num: " + num);
+//                 console.log("context: " + options.fn(context[i]));
+//             }
+//             return ret;
+//         },
+//         // total: function (context, options) {
+//         //     var ret = 0;
+//         //     for (var i = 0, j = context.length; i < j; i++) {
+//         //         ret = ret + options.fn(context[i])
+//         //     }
+//         //     return ret;
+//         // },
+//         list: function (context, options) {
+//             var ret = "";
+//             for (var i = 0, j = context.length; i < j; i++) {
+//                 ret = ret + options.fn(context[i]);
+//             }
+//             return ret;
+//         }
+//     }
+// });
 
 const session = require("express-session")
 
@@ -71,11 +71,6 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-
-//Calls the sendEmail Function
-// sendEmail('briancordovabusiness@gmail.com', 'Dynamic Email Template with Handlebars', 'welcomeMessage');
-
-// sync sequelize models to the database, then turn on the server
 
 //set to false to prevent server from restarting
 sequelize.sync({ force: false }).then(() => {
