@@ -1,7 +1,199 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div>
     <h1>Welcome, {{first_name}} {{last_name}}!</h1>
     <h2>Monthly Income</h2>
     <h3>${{income}}</h3>
+    <button id="editButton">EDIT</button>
     <h2>Contact Info</h2>
     <h3>{{email}}</h3>
 </div>
+
+{{!-- modal for income input --}}   
+<div>
+    <div id="incomeModal" class="addIncomeModal">
+        <div class="modal-content">
+            <h2>Edit Your Income</h2>
+            <input type="number" id="incomeAmount" placeholder="Income Amount">
+            <button id="submitIncome" type="button" class="btn btn-custom">Submit Income</button>
+            <span class="close-modal">&times;</span>
+        </div>
+    </div>
+</div>
+    
+{{!-- js for modal submission --}}
+<script>
+    const userId = {{user_id}};
+    document.getElementById("submitIncome").addEventListener("click", (event) => {
+        event.preventDefault();
+        const incomeAmount = document.querySelector("#incomeAmount").value;
+        const incomeObj = {
+            income: incomeAmount
+        };
+        fetch(`/api/users/${userId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(incomeObj),
+        })
+            .then((res) => {
+                if (res.ok) {
+                    console.log("Income updated successfully");
+                    window.location.reload();
+                } else {
+                    console.log("Error updating income");
+                }
+            })
+            .catch((error) => {
+                console.log("Error:", error);
+            });
+    });
+</script>
+<div id="expenseSummary">
+    <h2>Expense Summary</h2>   
+    {{#each Expenses}}
+    <p>{{category}} - {{description}}: ${{amount}}</p>
+    <button class="del-button" data-id="{{expense_id}}">DELETE</button>
+    {{/each}}
+</div>
+
+<script>
+const deleteButtons = document.querySelectorAll('.del-button');
+deleteButtons.forEach((button) => {
+    button.addEventListener('click', async (event) => {
+        const id = event.target.getAttribute('data-id');
+        try {
+            const response = await fetch(`/api/expenses/${id}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                console.log('Expense deleted successfully');
+                window.location.reload();
+            } else {
+                console.log('Error deleting expense');
+            }
+        } catch (error) {
+            console.log('Error:', error);
+        }
+    });
+});
+</script>
+
+<div>
+    <canvas id="myChart" style="margin:0 auto"></canvas>
+    <script>
+        let dynamicLabels = [
+                    {{#each Expenses}}
+                        '{{category}}',
+                    {{/each}}];
+        let dynamicData = [
+                        {{#each Expenses}}
+                            {{amount}},
+                        {{/each}}
+                    ];
+        //function to calculate total expenses
+        function calculateTotalExpenses() {
+            let total = 0;
+            for (let i = 0; i < dynamicData.length; i++) {
+                total += dynamicData[i];
+            }
+            return total;
+        }
+        //add total expenses to the page
+        let totalExpenses = calculateTotalExpenses();
+        let totalExpensesElement = document.createElement('p');
+        totalExpensesElement.textContent = `Total Expenses: $${totalExpenses}`;
+        
+        document.getElementById('expenseSummary').appendChild(totalExpensesElement);
+
+        //subtract total expenses from income
+        let income = {{income}};
+        let remainingBalance = income - totalExpenses;
+        let remainingBalanceElement = document.createElement('p');
+        remainingBalanceElement.textContent = `Remaining Balance: $${remainingBalance}`;
+        document.getElementById('expenseSummary').appendChild(remainingBalanceElement);
+
+        //create a function to generate random colors
+        function dynamicColors() {
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+        let dynamicBackgroundColors = dynamicLabels.map(() => dynamicColors());
+        
+        let myChart = document.getElementById('myChart').getContext('2d');
+        let expenseChart = new Chart(myChart, {
+            type: 'doughnut',
+            data: {
+                labels: dynamicLabels,
+                datasets: [{
+                    label: 'Monthly Expense',
+                    data: dynamicData,
+                    backgroundColor: dynamicColors,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: false,
+                },
+            },
+        });
+    </script>
+</div>
+
+
+{{!-- modal for expense input --}}
+<div>
+<div id="expenseModal" class="addExpenseModal">
+            <div class="modal-content">
+            <h2>Add Your Expense</h2>
+            <select id="expenseCategory">
+                <option value="Dining Out">Dining Out</option>
+                <option value="Gas">Gas</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Rent">Rent</option>
+                <option value="Misc">Misc.</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" id="expenseName" placeholder="Expense Name">
+            <input type="number" id="expenseAmount" placeholder="Expense Amount">
+            <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
+            <span class="close-modal">&times;</span>
+            </div>
+        </div>
+</div>
+
+{{!-- js for modal submission --}}
+<script>
+document.getElementById("submitExpense").addEventListener("click", (event) => {
+    event.preventDefault();
+    const expenseObj = {
+        category: document.querySelector("#expenseCategory").value,
+        amount: document.querySelector("#expenseAmount").value,
+        description: document.querySelector("#expenseName").value,
+    };
+    fetch("/api/expenses", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(expenseObj),
+    })
+        .then((res) => {
+            if (res.ok) {
+                console.log("Expense added successfully");
+                window.location.reload();
+            } else {
+                console.log("Error adding expense");
+            }
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+        });
+});
+    
+</script>

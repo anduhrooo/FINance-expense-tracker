@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Expense} = require("../models");
+const {Expense} = require("../../models");
 
 router.get("/", async (req, res) => {
 
@@ -12,8 +12,8 @@ try {
         return expenseObj.toJSON()
     })
     console.log(expenses)
-    // res.json(data);
-    res.render('landing', {expenses:expenses})
+    res.json(data);
+    // res.render('landing', {expenses:expenses})
 } catch (err) {
     console.log(err);
     res.status(500).json({ msg: "error occurred", err });
