@@ -23,10 +23,13 @@
   /* BASE STYLES */
   body {
     background-color: #dde2e6;
-    /* min-height: 500vh; */
+    min-height: 100vh;
     font-family: "Gilroy Medium", sans-serif;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
+
     /* NORMAL STYLES */
   /* .header {
     position: fixed;
@@ -226,7 +229,7 @@
   justify-content: space-between;
   flex-direction: row;
   /* align-items: center; */
-  
+  padding-bottom: 40px;
 }
 .card-one, .card-two{
   display: flex;
@@ -322,13 +325,15 @@ input[type="submit"]:hover {
 }
 /*///////////////////////Footer/////////////////////////*/
 .footer{
-  background-color: #1560BD;
-  bottom: 0;
-  position: fixed;
+  background-color: rgb(27, 36, 48);
+  /* bottom: 0; */
+  /* margin-top: 10vh; */
+  /* position: fixed; */
   z-index: 99999;
   height: 125px;
   width: 100%;
   column-count: 2;
+  margin-top: auto;
 }
 
 .github{
