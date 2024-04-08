@@ -2,6 +2,8 @@ const navEl = document.querySelector('.nav');
 const hamburgerEl = document.querySelector('.hamburger');
 const navItemEls = document.querySelectorAll('.nav__item');
 
+console.log('landing.js loaded');
+
 hamburgerEl.addEventListener('click', () => {
   navEl.classList.toggle('nav--open');
   hamburgerEl.classList.toggle('hamburger--open');

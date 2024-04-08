@@ -75,6 +75,7 @@ body {
 .nav__list {
   display: flex;
   column-gap: 40px;
+  color: white;
 }
 
 .nav__link {
