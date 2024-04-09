@@ -63,7 +63,8 @@
                             window.location.href = '/expenses';
                         } else {
                             // Error creating user
-                            console.log('Error creating user');
+                            //console.log('Error creating user');
+                            alert('Error creating user');
                         }
                     } catch (error) {
                         console.error('Error:', error);
@@ -114,7 +115,8 @@
                     window.location.href = '/expenses'; // Redirect to expenses page
                 } else {
                     // Error logging in
-                    console.log('Error logging in');
+                    //console.log('Error logging in');
+                    alert('Invalid username or password');
                 }
                 } catch (error) {
                 console.error('Error:', error);
