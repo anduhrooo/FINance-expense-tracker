@@ -20,11 +20,14 @@ body {
     background-color: var(--tile);
     border-radius: 10px;
     padding-left: 20px;
+    padding-right: 100px;
     color: var(--text);
     padding-top: 5px;
     box-shadow: 0px 5px 8px rgb(48, 75, 82);
     display: flex;
-    justify-content: space-around;
+
+    justify-content: space-between;
+
 }
 
 #welcome {
@@ -136,3 +139,23 @@ body {
     background-color: var(--card);
     border-radius: 10px;
 }
+
+
+@media screen and (max-width: 600px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #expense__list {
+        width: 90%;
+    }
+
+    #expense__summary {
+        width: 90%;
+    }
+
+    #total__spent {
+        height: 100px;
+    }
+}
+
