@@ -42,8 +42,8 @@ router.post("/", async (req, res) => {
             id:userData.user_id,
             username:userData.username
         }
-        req.session.loggedIn = true
-        sendEmail(req.body.email, 'User Account Created!', 'welcomeMessage')
+        req.session.loggedIn = true,
+        sendEmail(req.body.email, 'User Account Created!', 'welcomeMessage'),
         res.json(userData);
     } catch (err) {
         console.log(err);
