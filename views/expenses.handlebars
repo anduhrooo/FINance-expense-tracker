@@ -9,11 +9,13 @@
             <section id="total__spent">
                 <h1 id="welcome">Welcome,  {{first_name}} {{last_name}}!</h1>
                 <h3 class="income">Monthly Income: ${{income}} </h3>
+
                 <h3 class="expense" style="display: inline">Total Expenses: $
                 {{#selectAll Expenses}}
                     {{amount}}
                 {{/selectAll}}
                 </h3>                
+
             </section>
         </div>
     </div>
