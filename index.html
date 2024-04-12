@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/css/expenses.css">
+    <link rel="stylesheet" href="public/css/login.css">
+    <link rel="stylesheet" href="public/css/landing.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <title>FINance</title>
+</head>
+<body>
+    <header class="header">
+        <!-- <img class="logo__img" src="public/_baa08002-ea7f-4ab2-9227-5fbe424c93c0.jpg" alt="logo"> -->
+        <span class="logo__text">FINance</span>
+        <nav class="nav">
+            <ul class="nav__list">
+            <li class="nav__item">
+                <a class="nav__link" href="#">Profile</a>
+            </li>
+            <li class="nav__item">
+                <a class="nav__link" href="#"></a>
+            </li>
+            <li class="nav__item">
+                <a class="btn" href="#">Log Out</a>
+            </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Top bar that shows income and  -->
+    <div id="income__bar">
+        <div>
+            <section id="total__spent">
+                
+                <!-- ======== Placeholder ======== -->
+                <h3>Monthly Income: $$$$$</h1>
+                <!-- ======== Placeholder ======== -->
+
+            </section>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="expense__list">
+            <h2 style="text-align: center">Expense Summary</h2>
+            
+            <!-- Section for chart display -->
+            <section id="chart">
+                
+                
+                <canvas id="myChart"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctx = document.getElementById('myChart');
+                  
+                    new Chart(ctx, {
+                      type: 'bar',
+                      data: {
+                        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                        datasets: [{
+                          label: '# of Votes',
+                          data: [12, 19, 3, 5, 2, 3],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
+                    });
+                  </script>
+
+
+                <!-- ========== DEMO CHART ========== -->
+                <!-- <img src="demo-piechart.png" id="demo-piechart"> -->
+                <!-- ========== DEMO CHART ========== -->
+
+            </section>
+
+            <!-- Section for text summary -->
+            <section id="summary__text">
+                
+                <!-- ========== DEMO TEXT ========== -->
+                <p> Bills: $$$$ <br>
+                    Food: $$$ <br>
+                    Other: $$$ <br>
+                    Subscriptions: $$ <br>
+                </p>
+                <!-- ========== DEMO TEXT ========== -->
+
+            </section>
+
+        </div>
+
+        <div id="expense__summary">
+
+            <!-- Expense summary and add expense button -->
+            <section id="list__title">
+                <h2 style="text-align:center">Expense List</h2>
+                <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
+            </section>
+            
+            <section id="expense__cards">
+                
+                <!-- ========== DEMO CARDS ========== -->
+                <p class="card">Demo Card #01: $$$</p>
+                <p class="card">Demo Card #02: $$$</p>
+                <p class="card">Demo Card #03: $$$</p>
+                <p class="card">Demo Card #04: $$$</p>
+                <p class="card">Demo Card #05: $$$</p>
+                <p class="card">Demo Card #06: $$$</p>
+                <p class="card">Demo Card #07: $$$</p>
+                <p class="card">Demo Card #08: $$$</p>
+                <p class="card">Demo Card #09: $$$</p>
+                <p class="card">Demo Card #10: $$$</p>
+                <p class="card">Demo Card #11: $$$</p>
+                <p class="card">Demo Card #12: $$$</p>
+                <p class="card">Demo Card #13: $$$</p>
+                <p class="card">Demo Card #14: $$$</p>
+                <p class="card">Demo Card #15: $$$</p>
+                <!-- ========== DEMO CARDS ========== -->
+
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>

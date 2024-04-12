@@ -1,0 +1,223 @@
+<!-- Top bar that shows income and  -->
+<head>
+    <link rel="stylesheet" href="css/expenses.css">
+
+</head>
+
+    <div id="income__bar">
+        <div>
+            <section id="total__spent">
+                <h1 id="welcome">Welcome,  {{first_name}} {{last_name}}!</h1>
+                <h3 class="income">Monthly Income: ${{income}} </h3>
+
+                <h3 class="expense" style="display: inline">Total Expenses: $
+                {{#selectAll Expenses}}
+                    {{amount}}
+                {{/selectAll}}
+                </h3>                
+
+            </section>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="expense__list">
+            <h2 style="text-align: center">Expense Summary</h2>
+            
+            <!-- Section for chart display -->
+            <section id="chart">
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                
+                <canvas id="myChart" style="margin:0 auto"></canvas>
+                
+                <script>
+                    const ctx = document.getElementById('myChart');
+                    
+                    //Initialize object to store total expenses for each category
+                    let chartCategories = {'Dining Out':0,
+                                    'Groceries':0, 
+                                    'Gas':0, 
+                                    'Subscriptions':0, 
+                                    'Utilities':0, 
+                                    'Rent':0,
+                                    'Entertainment':0,
+                                    'Savings':0,
+                                    'Misc':0
+                                    };
+                  
+                    //Populate categories object with total expenses for each category
+                    {{#each Expenses}}
+                        chartCategories['{{category}}'] += {{amount}};
+                    {{/each}}
+
+                    //Remove categories with no expenses
+                    for (const [key, value] of Object.entries(chartCategories)) {
+                        if(value === 0) {
+                            delete chartCategories[key];
+                        }
+                    }
+
+                    let dynamicLabels = [];
+                    let dynamicData = [];
+
+                    for (const [key, value] of Object.entries(chartCategories)) {
+                        dynamicLabels.push(key);
+                        dynamicData.push(value);
+                    }
+
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: dynamicLabels,
+                            datasets: [{
+                            label: 'Monthly Expense',
+                            data: dynamicData,
+                            borderWidth: 1
+                            }]
+                        },
+                      options: {
+                        plugins: {
+                            legend: false,
+                        },
+                      },
+                    });
+                </script>
+
+            </section>
+
+            <!-- Section for text summary -->
+            <section id="summary__text">
+                
+                <script>
+                    let categories = {
+                                        'Dining Out':0,
+                                        'Groceries':0, 
+                                        'Gas':0, 
+                                        'Subscriptions':0, 
+                                        'Utilities':0, 
+                                        'Rent':0,
+                                        'Entertainment':0,
+                                        'Savings':0,
+                                        'Misc':0
+                                    };
+                  
+                  //Populate categories object with total expenses for each category
+                  {{#each Expenses}}
+                    categories['{{category}}'] += {{amount}};
+                  {{/each}}
+                  
+                  // Itterate through categories object and display total expenses for each category
+                  for (let category in categories) {
+                    if(categories[category] > 0) {
+                      document.write(category + ': $' + categories[category] + '<br>');
+                    }
+                  }
+
+                </script>
+                
+
+            </section>
+
+        </div>
+
+        <div id="expense__summary">
+
+            <!-- Expense summary and add expense button -->
+            <section id="list__title">
+                <h2 style="text-align:center">Expense List</h2>
+                <button id='addExpense' type="button" class="btn btn-custom">Add Expense</button>
+            </section>
+
+            
+            <section id="expense__cards">
+
+            <!-- The Modal -->
+
+            <div id="expenseModal" class="addExpenseModal">
+              <div class="modal-content">
+                <h2>Add Your Expense</h2>
+                <select id="expenseCategory">
+                    <option value="Dining Out">Dining Out</option>
+                    <option value="Gas">Gas</option>
+                    <option value="Groceries">Groceries</option>
+                    <option value="Utilities">Utilities</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Misc">Misc.</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="expenseName" placeholder="Expense Name">
+                <input type="number" id="expenseAmount" placeholder="Expense Amount">
+                <button id="submitExpense" type="button" class="btn btn-custom">Submit Expense</button>
+                <span class="close-modal">&times;</span>
+                </div>
+            </div>
+
+            <script>
+                document.getElementById("submitExpense").addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const expenseObj = {
+                        category: document.querySelector("#expenseCategory").value,
+                        amount: document.querySelector("#expenseAmount").value,
+                        description: document.querySelector("#expenseName").value,
+                    };
+
+                    fetch("/api/expenses", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(expenseObj),
+                    })
+                    .then((res) => {
+                        if (res.ok) {
+                            console.log("Expense added successfully");
+                            window.location.reload();
+                        } else {
+                            console.log("Error adding expense");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("Error:", error);
+                    });
+                });   
+            </script>
+
+
+                <div id="expenseSummary">  
+                    {{#each Expenses}}
+                    <p class="card">{{category}} - {{description}}: ${{amount}}
+                    <button class="del-button" data-id="{{expense_id}}">DELETE</button>
+                    </p>
+                    {{/each}}
+                </div>
+
+                <script>
+                    const deleteButtons = document.querySelectorAll('.del-button');
+                    deleteButtons.forEach((button) => {
+                        button.addEventListener('click', async (event) => {
+                            const id = event.target.getAttribute('data-id');
+                            try {
+                                const response = await fetch(`/api/expenses/${id}`, {
+                                    method: 'DELETE',
+                                });
+                                if (response.ok) {
+                                    console.log('Expense deleted successfully');
+                                    window.location.reload();
+                                } else {
+                                    console.log('Error deleting expense');
+                                }
+                            } catch (error) {
+                                console.log('Error:', error);
+                            }
+                      });
+                    });
+                </script>
+
+            </section>
+
+        </div>
+    </div>
+    <script src="/js/landing.js"></script>
+    <script src="/js/expenses.js"></script>
+    
+

@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --header: #245c94;
+    --background: #dde2e6;
+    --tile: #202b3b;
+    --text: white;
+    --card: #95b4d45f;
+}
+
+body {
+    background-color: var(--background);
+}
+
+
+#total__spent {
+    height: 50px;
+    margin: 2%;
+    background-color: var(--tile);
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 100px;
+    color: var(--text);
+    padding-top: 5px;
+    box-shadow: 0px 5px 8px rgb(48, 75, 82);
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+#welcome {
+    width: 400px;
+}
+
+#income {
+    display: flex;
+    width: 50%;
+    margin-right: 50px;
+}
+
+#expense {
+    display: flex;
+    width: 50%;
+
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#expense__list {
+    background-color: var(--tile);
+    margin: 1%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    height: 65vh;
+    color: var(--text);
+    box-shadow: 0px 5px 8px rgb(48, 75, 82);
+    /* box-shadow: 0px 41px 41px #57616b,
+  -41px -3px 83px #dee2e6; */
+}
+
+#chart {
+    height: 200px;
+}
+
+#summary__text {
+    background-color: var(--card);
+    border-radius: 10px;
+    height: 25vh;
+    margin-top: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-color: var(--card) var(--tile);
+}
+
+#expense__summary {
+    background-color: var(--tile);
+    margin: 1%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    height: 65vh;
+    color: var(--text);
+    box-shadow: 0px 5px 8px rgb(48, 75, 82);
+    /* box-shadow: 41px 41px 83px #57616b,
+  -41px -3px 83px #dee2e6; */
+}
+
+
+#list__title {
+    height: 10vh;
+}
+
+#expenseModal {
+  display: none;
+  background-color: var(--tile);
+    border-radius: 10px;
+    padding: 20px;
+    color: black;
+    box-shadow: 0px 5px 8px rgb(48, 75, 82);
+}
+.modal-content {
+  border-radius: 10px;
+    padding: 20px;
+    color: black;
+    box-shadow: 0px 5px 8px rgb(48, 75, 82);
+}
+
+#addExpense {
+    background-color: var(--header);
+    border: none;
+    color: var(--text);
+    padding: 10px 10px;
+}
+
+#expense__cards {
+    max-height: 50vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-color: var(--card) var(--tile);
+}
+
+
+.card {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    width: 99%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: var(--card);
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    #container {
+        flex-direction: column;
+    }
+
+    #expense__list {
+        width: 90%;
+    }
+
+    #expense__summary {
+        width: 90%;
+    }
+
+    #total__spent {
+        height: 100px;
+    }
+}
+

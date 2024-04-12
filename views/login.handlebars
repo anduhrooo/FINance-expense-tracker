@@ -1,0 +1,170 @@
+<div class="forms">
+        <div class="card-one">
+            <form class="formOne" method="post">
+                <h2>Create an Account</h2>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <label for="monthlyIncome">Monthly Income</label>
+                <input type="number" id="monthlyIncome" name="monthlyIncome" required>
+            
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <script>
+            function createUser() {
+                const form = document.querySelector('.formOne');
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const first_name = document.getElementById('firstName').value;
+                    const last_name = document.getElementById('lastName').value;
+                    const username = document.getElementById('username').value;
+                    const email = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    const income = document.getElementById('monthlyIncome').value;
+
+                    // Make a POST request to the users table
+                    try {
+                        const response = await fetch('/api/users', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                first_name,
+                                last_name,
+                                username,
+                                email,
+                                password,
+                                income
+                            })
+                        });
+
+                        if (response.ok) {
+                            // User created successfully
+                            console.log('User created successfully');
+                            window.location.href = '/expenses';
+                        } else {
+                            // Error creating user
+                            //console.log('Error creating user');
+                            alert('Error creating user');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+
+            createUser();
+        </script>
+        
+        <div class="card-two">
+            <form class="formTwo" method="post">
+                <h2>Login</h2>
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+        
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+        
+                <input type="submit" value="Login">
+            </form>
+        </div>
+
+        <script>
+            function loginUser() {
+            const form = document.querySelector('.formTwo');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+
+                // Make a POST request to the login route
+                try {
+                const response = await fetch('/api/users/login', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                    username,
+                    password
+                    })
+                });
+
+                if (response.ok) {
+                    // User logged in successfully
+                    console.log('User logged in successfully');
+                    window.location.href = '/expenses'; // Redirect to expenses page
+                } else {
+                    // Error logging in
+                    //console.log('Error logging in');
+                    alert('Invalid username or password');
+                }
+                } catch (error) {
+                console.error('Error:', error);
+                }
+            });
+            }
+
+            loginUser();
+        </script>
+
+                <div class="card-three" >
+          <form class="formThree" action="submit.php" method="post">
+            <h2>Create an Account</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <label for="monthlyIncome">Monthly Income</label>
+            <input type="number" id="monthlyIncome" name="monthlyIncome" required>
+        
+            <input type="submit" value="Submit">
+            <strong><hr></strong>
+            <h2>Login</h2>
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+        
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+        
+                <input type="submit" value="Login">
+          </form>
+        </div>
+        
+
+        </script>
+    
+

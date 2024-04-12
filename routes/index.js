@@ -1,15 +1,9 @@
 const router = require('express').Router();
 
-const categoryRoutes = require('./categoryRoutes');
-router.use('/categories', categoryRoutes);
+const apiRoutes = require('./api')
+const homeRoutes = require('./homeRoutes')
 
-const userRoutes = require('./usersRoutes');
-router.use('/users', userRoutes);
-
-const expensesRoutes = require('./expensesRoutes')
-router.use('/expenses', expensesRoutes)
-
-const budgetsRoutes = require('./budgetsRoutes')
-router.use('/budgets', budgetsRoutes)
+router.use('/api', apiRoutes)
+router.use('/', homeRoutes)
 
 module.exports = router;
